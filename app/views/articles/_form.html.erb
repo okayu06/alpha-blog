@@ -1,11 +1,4 @@
-<% if @article.errors.any? %>
-<h2>The following errors prevented articles form getting created</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'shared/errors/', obj:@article %>
 
 <div class='row'>
   <div class='col-xs-12'>
@@ -38,3 +31,5 @@
     </div>
   </div>
 </div>
+
+<!--bootstrap is from "https://getbootstrap.com/docs/3.3/css/"-->

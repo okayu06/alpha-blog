@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     if @article.save
       #flashというのは内部的に何をしているのかというと、HTTPレスポンスを返す際にそのレスポンスヘッダーにそのメッセージを仕込ませるという処理を行っています。その都度レスポンスヘッダーに情報を渡すだけなので、このflashによるメッセージが表示されるのは一回限りです。ブラウザの更新ボタンを押したりして再度リクエストを送るとメッセージは表示されません。
-      flash[:notice] = "Article was successfully saved"
+      flash[:success] = "Article was successfully saved"
       redirect_to articles_path
     else
       #newtemplateをrenderinsg
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
   def update 
     
     if @article.update(article_params)
-      flash[:notice] = "Article was successfully updated"
+      flash[:success] = "Article was successfully updated"
       redirect_to article_path(@article)
     else
       render 'edit'
@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
   def destroy
     
     @article.destroy
-    flash[:notice] = "destruction was successful"
+    flash[:danger] = "destruction was successful"
     redirect_to articles_path
   end  
   
