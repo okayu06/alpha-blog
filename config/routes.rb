@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   
   #全てのパス
   resources :articles
+  
+  get 'signup', to: "users#new" 
+  resources :users, except: [:new]
 end
