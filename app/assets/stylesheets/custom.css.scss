@@ -23,7 +23,7 @@ $navbar-default-bg: black;
 
 .jumbotron{
   backgroud-color: #08088A;
-  backgroud-image: url(rubyrails.png);
+  backgroud-image: asset-url('rubyrails.png');
   backgroud-size: cover;
   hight: 5500px;
 }
