@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     #debugger
     #render plain: params[:article].inspect
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
     if @article.save
       #flashというのは内部的に何をしているのかというと、HTTPレスポンスを返す際にそのレスポンスヘッダーにそのメッセージを仕込ませるという処理を行っています。その都度レスポンスヘッダーに情報を渡すだけなので、このflashによるメッセージが表示されるのは一回限りです。ブラウザの更新ボタンを押したりして再度リクエストを送るとメッセージは表示されません。
       flash[:success] = "Article was successfully saved"
