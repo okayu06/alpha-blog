@@ -7,12 +7,14 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     get new_category_path
     #適切なテンプレート、レイアウトファイルが選択されているか
     assert_template 'categories/new'   
+    #createで一つカテゴリーが増えたか
     assert_difference 'Category.count', 1 do
       post categories_path, params:{ category:{name:"sports"}}
       #リダイレクト実行後に続いて別のリクエストを行う予定があるのであれば、follow_redirect!を呼び出すことを忘れずに。
       follow_redirect!
     end  
     assert_template 'categories/index'
+    #responseの内容と一致するか？
     assert_match "sports", response.body
   end
   
